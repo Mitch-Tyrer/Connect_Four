@@ -1,6 +1,6 @@
+const game = new Game();
 const gameStart = document.getElementById('begin-game');
 
-new Game();
 
 gameStart.addEventListener('click', () =>{
     this.style.display = 'none';
