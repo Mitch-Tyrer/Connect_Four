@@ -5,6 +5,14 @@ class Game {
         this.ready = false
     } 
 
+      /**
+     * Returns active player
+     * @return {Object} player - the players who turn it is.
+     */
+    get activePlayer() {
+        return this.players.find(player => player.isTurn);
+    }
+
     /**
      * create 2 players
      * @return {array} An array of the 2 player objects
@@ -16,7 +24,13 @@ class Game {
         return players;
     }
 
+  
+    /**
+     * starts the game
+     */
     startGame() {
-        
+        this.board.drawHTMLBoard();
+        this.activePlayer.activeToken.drawHTMLToken();
+        this.ready = true;
     }
 }
