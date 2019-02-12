@@ -12,6 +12,11 @@ The goal is to get more comfortable with working with classes in JS in preparati
 Classes:
     Game
     Token
+        color
     Board
     Player
+        name
+        Turn
+        token.color
+        
     Space
