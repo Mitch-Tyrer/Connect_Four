@@ -24,6 +24,40 @@ class Game {
         return players;
     }
 
+
+
+    /**
+     * keydown handler, branches code depending on what key is press
+     * @param {Object} e - keydown event object
+     */
+	handleKeydown(e) {
+        if (this.ready) {
+            if (e.key === "ArrowLeft") {
+                this.activePlayer.activeToken.moveLeft();
+            } else if (e.key === "ArrowRight") {
+                this.activePlayer.activeToken.moveRight(this.board.columns);
+            } else if (e.key === "ArrowDown") {
+                this.playToken();
+            }
+        }
+    }
+
+    playToken() {
+        let spaces = this.board.spaces;
+        let activeToken = this.activePlayer.activeToken;
+        let targetCol = spaces[activeToken.columnLocation];
+        let targetSpace = null;
+
+        for(let space of targetCol){
+            if(space.token === null){
+                targetSpace = space;
+            }
+        }
+        if (targetSpace !== null) {
+            game.ready = false;
+            activeToken.drop(targetSpace);
+        }
+    }
   
     /**
      * starts the game
